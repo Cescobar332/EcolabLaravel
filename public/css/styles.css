@@ -1,0 +1,101 @@
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+    padding-top: 50px;
+    margin: 0;
+}
+.container {
+    max-width: 450px;
+    background-color: #fff;
+    border-radius: 62px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 40px;
+    margin: auto;
+    box-sizing: border-box;
+    text-align: center; /* Centrar contenido */
+}
+h2 {
+    text-align: center;
+    color: #ff6700;
+}
+p {
+    text-align: left;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.form-control {
+    border-radius: 62px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 10px;
+    width: calc(100% - 20px);
+    margin-bottom: 20px;
+    border: 1px solid rgba(255,103,0,0.51);
+    box-sizing: border-box;
+    font-size: 16px;
+}
+.form-check {
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+.form-check input[type="checkbox"] {
+    display: none;
+}
+.form-check label {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+}
+.form-check label:before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid rgba(255,103,0,0.51);
+    border-radius: 3px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.form-check input[type="checkbox"]:checked + label:before {
+    background-color: #ff6700;
+    border-color: #ff6700;
+}
+.form-check input[type="checkbox"]:checked + label:after {
+    content: '\2713';
+    font-size: 14px;
+    color: #fff;
+    position: absolute;
+    left: 4px;
+    top: 3px;
+}
+.button{
+    width: calc(50% - 10px);
+    padding: 10px;
+    border: 1px solid #ff6700;
+    border-radius: 62px;
+    background-color: #fff;
+    color: #ff6700;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    box-sizing: border-box;
+}
+.button:hover,
+.button:focus { /* Aplicar estilos cuando está enfocado */
+    background-color: #ff6700;
+    color: #fff;
+    border-color: #ff6700;
+}
+.button:active {
+    background-color: #ff6700;
+    color: #fff;
+    border-color: #ff6700;
+}
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
