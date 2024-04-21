@@ -26,10 +26,10 @@ class UsuarioController extends Controller
         $usuario->nombre = $request->nombre;
         $usuario->apellido = $request->apellido;
         $usuario->email = $request->email;
-        $usuario->password = bcrypt($request->password); // Asegúrate de usar un hash seguro para la contraseña
+        $usuario->password = bcrypt($request->password); 
         $usuario->save();
 
-        return redirect()->route('inicio'); // Cambia 'inicio' por la ruta a la siguiente página después del registro
+        return redirect()->route('inicio');
     }
 
 }
