@@ -26,4 +26,5 @@ Route::get('/inicio-sesion', [SesionController::class, 'formularioInicioSesion']
 Route::post('/inicio-sesion', [SesionController::class, 'inicioSesion'])->name('inicio_sesion.post');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 Route::post('/dashboard/action', [DashboardController::class, 'store'])->name('dashboard.store');
-
+Route::get('/recuperar-contrasena', [SesionController::class, 'recuperarContrasena'])->name('recuperar_contrasena');
+Route::post('/recuperar-contrasena', [SesionController::class, 'recContra'])->name('recuperar_contrasena.post');

@@ -31,7 +31,7 @@
             </button>
         </div>
         <div class="olvidar-link">
-            <a href="#">¿Olvidaste tu contraseña?</a>
+            <a href="{{ route('recuperar_contrasena') }}">¿Olvidaste tu contraseña?</a>
         </div>
         <button type="submit" class="button_is">INICIAR SESIÓN</button>
     </form>

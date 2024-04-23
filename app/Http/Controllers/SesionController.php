@@ -15,4 +15,14 @@ class SesionController extends Controller
         // Aquí maneja la lógica de inicio de sesión
         
     }
+    public function recuperarContrasena()
+    {
+        return view('recuperar_contrasena');
+    }
+    public function recContra(Request $request)
+    {
+        // Aquí maneja la lógica de recuperar contraseña
+        
+    }
+
 }
