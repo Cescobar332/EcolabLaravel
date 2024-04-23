@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ECOLAB</title>
-    <!-- Enlazando tu CSS personalizado -->
     <link rel="stylesheet" href="css/styles.css"> 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
@@ -47,6 +46,43 @@
     </nav>
 
     <br><br> <!-- Añadir estos para compensar el navbar fijo -->
+    <div class="container mt-5">
+        <!-- Título del resumen -->
+        <h3 class="mb-4">Resumen del Estado Actual</h3>
+
+        <!-- Contenido del resumen -->
+        <div class="row">
+            <!-- Estadísticas -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Cantidad de Reactivos</h5>
+                        <!-- Aquí puedes mostrar la cantidad de reactivos disponibles -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Más estadísticas -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Cantidad de Residuos Químicos</h5>
+                        <!-- Aquí puedes mostrar la cantidad de residuos químicos disponibles -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Otras estadísticas -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Alertas Activas</h5>
+                        <!-- Aquí puedes mostrar la cantidad de alertas activas -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 <!-- Scripts de Bootstrap -->
