@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
 <body>
-    <!-- Aplicando la clase personalizada 'navbar-custom' -->
+    <!-- Barra de navegación -->
     <nav class="navbar navbar-expand-lg fixed-top navbar-custom">
         <div class="container-fluid"> <!-- Esto ayuda a mantener la estructura -->
             <a class="navbar-brand" href="#">
                 <!-- Imagen del logo con tamaño ajustado -->
-                <img src="img/ecolab_white.png" alt="Logo ECOLAB" style="height: 30px;">
+                <img src="img/ecolab_white.png" alt="Logo ECOLAB" style="height: 30px;"> <!-- Corregí el doble comillado -->
             </a>
             
             <!-- Botón de toggle para pantallas pequeñas -->
@@ -25,6 +25,7 @@
             <!-- Sección colapsable -->
             <div class="collapse navbar-collapse" id="navbarContent">
                 <ul class="navbar-nav ms-auto"> <!-- Para alinear a la derecha -->
+                    <!-- Aquí debes verificar que las rutas sean correctas -->
                     <li class="nav-item">
                         <a class="nav-link" href="/home">Home</a>
                     </li>
@@ -40,53 +41,167 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/qr">QR</a>
                     </li>
+                    <li class="nav-item">
+                        <img src="img/user.png" class="img-icon1"> <!-- Asegúrate de que esta imagen existe -->
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <br><br> <!-- Añadir estos para compensar el navbar fijo -->
-    <div class="container mt-5">
-        <!-- Título del resumen -->
+    <!-- Verifica la estructura de tu contenido -->
+    <br><br> 
+    <div class="container mt-5 custom">
         <h3 class="mb-4">Resumen del Estado Actual</h3>
-
-        <!-- Contenido del resumen -->
         <div class="row">
-            <!-- Estadísticas -->
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Cantidad de Reactivos</h5>
-                        <!-- Aquí puedes mostrar la cantidad de reactivos disponibles -->
+                        <canvas id="doughnutChart"></canvas> <!-- Asegúrate de que esta etiqueta sea correcta -->
                     </div>
                 </div>
             </div>
-
-            <!-- Más estadísticas -->
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Cantidad de Residuos Químicos</h5>
-                        <!-- Aquí puedes mostrar la cantidad de residuos químicos disponibles -->
+                        <h5 la="card-title">Cantidad de Residuos Químicos</h5>
+                        <canvas id="doughnutChemicals"></canvas> <!-- Asegúrate de que esta etiqueta sea correcta -->
                     </div>
                 </div>
             </div>
-
-            <!-- Otras estadísticas -->
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Alertas Activas</h5>
-                        <!-- Aquí puedes mostrar la cantidad de alertas activas -->
+                        <h5 la="card-title">Alertas Activas</h5>
+                        <canvas id="barChart"></canvas> <!-- Etiqueta correcta -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</body>
 
-<!-- Scripts de Bootstrap -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="{{ asset('js/app.js') }}"></script>
+    <br><br> <!-- Separa bien el contenido -->
+    
+    <!-- Asegúrate de que los scripts se carguen después del contenido -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Eliminar '{{ asset('js/app.js') }}', si está en un entorno estático -->
+    
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const ctx = document.getElementById("doughnutChart").getContext("2d");
+        const doughnutChart = new Chart(ctx, {
+            type: "doughnut", 
+            data: {
+                labels: ["Alcoholes", "Ácidos org.", "Aceites", "Oxalatos", "Eteres"], 
+                datasets: [{
+                    data: [
+                        Math.floor(Math.random() * 100), 
+                        Math.floor(Math.random() * 100),
+                        Math.floor(Math.random() * 100), 
+                        Math.floor(Math.random() * 100), 
+                        Math.floor(Math.random() * 100)
+                    ],
+                    backgroundColor: ["#a2d2ff", "#bde0fe", "#ffafcc", "#ffc8dd", "#cdb4db"], 
+                    borderColor: "#fff",
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true, 
+                cutout: "70%", 
+                plugins: {
+                    legend: {
+                        position: "top"
+                    },
+                    tooltip: {
+                        enabled: true
+                    }
+                }
+            }
+        });
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const ctxChemicals = document.getElementById("doughnutChemicals").getContext("2d");
+        const doughnutChemicals = new Chart(ctxChemicals, {
+            type: "doughnut", 
+            data: {
+                labels: [
+                    "Solución de tiosulfato de sodio 2%", 
+                    "Cloroformo", 
+                    "Xilol + zinc",
+                    "Sulfato de amonio férrico", 
+                    "Eter 45 Acetona 15"
+                ],
+                datasets: [{
+                    data: [
+                        Math.floor(Math.random() * 100), 
+                        Math.floor(Math.random() * 100), 
+                        Math.floor(Math.random() * 100),
+                        Math.floor(Math.random() * 100),
+                        Math.floor(Math.random() * 100)
+                    ],
+                    backgroundColor: ["#a2d2ff", "#bde0fe", "#ffafcc", "#ffc8dd", "#cdb4db"], 
+                    borderColor: "#fff",
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true, 
+                cutout: "70%", 
+                plugins: {
+                    legend: {
+                        position: "top"
+                    },
+                    tooltip: {
+                        enabled: true
+                    }
+                }
+            }
+        });
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const ctx = document.getElementById("barChart").getContext("2d");
+        const barChart = new Chart(ctx, {
+            type: "bar",
+            data: {
+                labels: ["2-propanol", "Ácido clorhídrico fumante 37%", "2-Propanol EMPLURA", "Azul de lactofenol", "Fast Green FCF"],
+                datasets: [{
+                    label: "Días restantes para vencimiento",
+                    data: [15, 5, 25, 3, 20], 
+                    backgroundColor: ["#a2d2ff", "#bde0fe", "#ffafcc", "#ffc8dd", "#cdb4db"]
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: "Días restantes"
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: "Reactivos"
+                    }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        enabled: true
+                    }
+                }
+            }
+        });
+    });
+    </script>
 </html>
