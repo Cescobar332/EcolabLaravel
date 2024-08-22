@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UsuarioController;
-use App\Http\Controllers\SesionController;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PaginasController;
 
 
 /*
@@ -17,14 +17,10 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', HomeController::class);
+
+Route::prefix('/products')->controller(ProductController::class)->group(function () {
+    Route::get('/', 'index');
+    Route::get('/create', 'create');
+    Route::get('/{product}/{category?}', 'show');
 });
-Route::get('/registro', [UsuarioController::class, 'formularioRegistro'])->name('registro');
-Route::post('/registro', [UsuarioController::class, 'guardarUsuario']);
-Route::get('/inicio-sesion', [SesionController::class, 'formularioInicioSesion'])->name('inicio_sesion');
-Route::post('/inicio-sesion', [SesionController::class, 'inicioSesion'])->name('inicio_sesion.post');
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
-Route::post('/dashboard/action', [DashboardController::class, 'store'])->name('dashboard.store');
-Route::get('/recuperar-contrasena', [SesionController::class, 'recuperarContrasena'])->name('recuperar_contrasena');
-Route::post('/recuperar-contrasena', [SesionController::class, 'recContra'])->name('recuperar_contrasena.post');

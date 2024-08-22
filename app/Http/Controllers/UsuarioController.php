@@ -7,11 +7,6 @@ use App\Models\Usuario;
 
 class UsuarioController extends Controller
 {
-    public function formularioRegistro()
-    {
-        return view('registro');
-    }
-
     public function guardarUsuario(Request $request)
     {
         $request->validate([
