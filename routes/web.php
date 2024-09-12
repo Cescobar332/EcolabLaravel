@@ -20,7 +20,8 @@ use App\Http\Controllers\PaginasController;
 Route::get('/', HomeController::class);
 
 Route::prefix('/products')->controller(ProductController::class)->group(function () {
-    Route::get('/', 'index');
+    Route::get('/', 'index')->name('products.index');
     Route::get('/create', 'create');
-    Route::get('/{product}/{category?}', 'show');
+    Route::get('/{id}', 'show')->name('products.show');
 });
+Route::post('products' , [ProductController::class, 'store'])->name('products.store');
